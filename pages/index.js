@@ -48,5 +48,11 @@ export async function getStaticProps() {
       }
     }
     `
-  })
+  });
+
+return {
+  props : {
+    characaters : data.characters.results
+  }
+}
 }
