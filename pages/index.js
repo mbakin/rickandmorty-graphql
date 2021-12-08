@@ -3,21 +3,22 @@ import { useState } from 'react'
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import styles from '../styles/Home.module.css'
 
+import {
+  Heading,
+  Box,
+  Flex,
+  Input,
+  Stack,
+  IconButton,
+  useToast
+} from "@chakra-ui/react";
+
 export default function Home(results) {
 
   const initialState = results;
   const [characters, setCharacters] = useState(initialState.characters);
 
-  import {
-    Heading,
-    Box,
-    Flex,
-    Input,
-    Stack,
-    IconButton,
-    useToast
-  } from "@chakra-ui/react";
-
+  console.log(initialState);
   return (
     <div className={styles.container}>
       <Head>
