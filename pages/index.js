@@ -2,7 +2,11 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+export default function Home(results) {
+
+  const initialState = results;
+  const [characters, setCharacters] = useState(initialState.characters);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -52,7 +56,7 @@ export async function getStaticProps() {
 
 return {
   props : {
-    characaters : data.characters.results
+    characters : data.characters.results
   }
 }
 }
