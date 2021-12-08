@@ -1,11 +1,22 @@
 import Head from 'next/head'
-import Image from 'next/image'
+import { useState } from 'react'
+import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import styles from '../styles/Home.module.css'
 
 export default function Home(results) {
 
   const initialState = results;
   const [characters, setCharacters] = useState(initialState.characters);
+
+  import {
+    Heading,
+    Box,
+    Flex,
+    Input,
+    Stack,
+    IconButton,
+    useToast
+  } from "@chakra-ui/react";
 
   return (
     <div className={styles.container}>
