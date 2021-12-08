@@ -3,6 +3,8 @@ import { useState } from 'react'
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import styles from '../styles/Home.module.css'
 
+import Character from '../components/Character';
+
 import {
   Heading,
   Box,
@@ -29,6 +31,7 @@ export default function Home(results) {
         
         <Box mb={4} flexDirection="column" align="center" justify="center" py={8}>
           <Heading as="h1" size="2xl" mb={8}>Rick And Morty</Heading>
+          <Character characters={characters} />
         </Box>
 
       </Flex>    
