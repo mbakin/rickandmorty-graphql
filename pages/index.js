@@ -3,8 +3,6 @@ import { useState } from 'react'
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import styles from '../styles/Home.module.css'
 
-import Character from '../components/Character';
-
 import {
   Heading,
   Box,
@@ -14,11 +12,18 @@ import {
   IconButton,
   useToast
 } from "@chakra-ui/react";
+  
+import { SearchIcon, CloseIcon } from "@chakra-ui/icons";
+
+import Character from '../components/Character';
 
 export default function Home(results) {
 
   const initialState = results;
   const [characters, setCharacters] = useState(initialState.characters);
+
+  const [search, setSearch] = useState('');
+  const toast = useToast();
 
   return (
       <Flex direction="column" align="center" justify="center" >
@@ -31,6 +36,18 @@ export default function Home(results) {
         
         <Box mb={4} flexDirection="column" align="center" justify="center" py={8}>
           <Heading as="h1" size="2xl" mb={8}>Rick And Morty</Heading>
+          <form onSubmit="">
+            <Stack maxWidth="350px" width="100%" isInline mb={8}>
+              <Input placeholder="Search" border="none" value={search} onChange={(e) => setSearch(e.target.value)} > 
+
+              </Input>
+              <IconButton colorScheme="blue" aria-label="Search Database" icon={<SearchIcon/>} disabled={search === ""} type="submit"/>
+              <IconButton colorScheme="red" aria-label="Reset" icon={<CloseIcon />} disabled={search === ""} onClick={async () => {
+                setSearch("");
+                setCharacters(initialState.characters);
+              }}/>
+            </Stack>
+          </form>
           <Character characters={characters} />
         </Box>
 
