@@ -5,7 +5,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-// eslint-disable-next-line no-unused-vars
 
 export default async (req, res) => {
   const search = req.body;
